@@ -2,8 +2,9 @@
 <html lang="en">
 <link rel="stylesheet" href="style.css">
 
+
 <!-- below is the dropdown menu -->
-<header>
+<header class="header">
     <div class="dropdown"> 
         <button>MENU</button> 
         <div class="content">
@@ -23,57 +24,94 @@
     <title>CAFÉ VINYLE</title>
 </head>
 
+<!-- below is the main section of the home page -->
+
 <body>
-    <a> <p style="text-align: center;">Come enjoy a nice cup of coffee while you browse for your favorite records!</p>
+    <a> <p style="text-align: center;"></p>
+
+  <main>
+    <section class="hero-section"> 
+      <div class="section-content">
+        <div class="hero-details">
+          <h2 class="title">CAFE VINYLE</h2>
+          <h3 class="subtitle">Come enjoy a nice cup of coffee while you browse for your favorite records!</h3>
+          <p class="description">Cafe Vinyle is a small local coffee joint that doubles as a record store! Join us in Summerville to try our delicious brews and listen to your favorite records!</p>
+
+          <div class="buttons">
+            <a href="shop.html" class="button order-now">Order Now</a>
+            <a href="locations.html" class="button visit-us">Visit Us</a>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <img src="1.png" alt="Hero" class="hero-image" width="600">
+        </div>
+      </div>
+    </section>
+
+    <!-- this is the featured products center -->
+    <section class="featured-section">
+
+        <h2 class="featured-title">Featured Products</h2>
+
+        <p class="featured-subtitle">
+            A few of our favorites from the Café Vinyle shop.
+        </p>
+
+        <div class="featured-products">
+
+            <!-- product 1 -->
+            <div class="featured-product">
+                <img src="1.png" alt="Pumpkin Maple Roasted coffee">
+
+                <h3>Pumpkin Maple Roasted</h3>
+
+                <p class="featured-price">$8.00</p>
+
+                <a href="shop.html" class="featured-button">
+                    VIEW IN SHOP
+                </a>
+            </div>
+
+
+            <!-- product 2 -->
+            <div class="featured-product">
+                <img src="1 (1) copy.png" alt="OCTANE Don Toliver vinyl">
+
+                <h3>OCTANE - Don Toliver | 2LP VINYL</h3>
+
+                <p class="featured-price">$28.00</p>
+
+                <a href="shop.html" class="featured-button">
+                    VIEW IN SHOP
+                </a>
+            </div>
+
+
+            <!-- product 3 -->
+            <div class="featured-product">
+                <img src="kingofheartslp.webp" alt="King of Hearts Brandon Lake vinyl">
+
+                <h3>KING OF HEARTS - Brandon Lake | 2LP VINYL</h3>
+
+                <p class="featured-price">$45.00</p>
+
+                <a href="shop.html" class="featured-button">
+                    VIEW IN SHOP
+                </a>
+            </div>
+
+        </div>
+
+        <a href="shop.html" class="view-all">
+            VIEW ALL PRODUCTS →
+        </a>
+
+    </section>
+
+</main>
+  </main>
 
 </body>
-
-<!-- Featured Products Section -->
-<section class="featured-products">
-  <h2>Featured Products</h2>
-  
-  <div class="product-grid">
-    <!-- Product Card 1 -->
-    <div class="product-card">
-      <a href="1.png">
-        <img src="1.png" alt="pumpkin" class="product-image">
-      </a>
-      <div class="product-info">
-        <span class="product-category">Coffee</span>
-        <h3 class="product-title"><a href="shop.html">Pumpkin Maple Roasted</a></h3>
-        <div class="product-price">$8.00</div>
-        <button class="add-to-cart-btn">Add to Cart</button>
-      </div>
-    </div>
-
-    <!-- Product Card 2 -->
-    <div class="product-card">
-      <a href="product-details-2.html">
-        <img src="images/product2.jpg" alt="Wireless Earbuds" class="product-image">
-      </a>
-      <div class="product-info">
-        <span class="product-category">Electronics</span>
-        <h3 class="product-title"><a href="product-details-2.html">Wireless Noise-Canceling Earbuds</a></h3>
-        <div class="product-price">$189.00</div>
-        <button class="add-to-cart-btn">Add to Cart</button>
-      </div>
-    </div>
-
-    <!-- Product Card 3 -->
-    <div class="product-card">
-      <a href="product-details-3.html">
-        <img src="images/product3.jpg" alt="Leather Backpack" class="product-image">
-      </a>
-      <div class="product-info">
-        <span class="product-category">Travel</span>
-        <h3 class="product-title"><a href="product-details-3.html">Waterproof Leather Backpack</a></h3>
-        <div class="product-price">$145.00</div>
-        <button class="add-to-cart-btn">Add to Cart</button>
-      </div>
-    </div>
-  </div>
-</section>
-
 
     <footer>
        <div class="footer">
