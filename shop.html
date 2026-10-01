@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOP | CAFÉ VINYLE</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <link rel="stylesheet" href="styleshop.css">
+</head>
+
+<body>
+
+<!-- Navigation -->
+<header>
+    <div class="dropdown">
+        <button>MENU</button>
+        <div class="content">
+            <a href="index.html">HOME</a>
+            <a href="shop.html">SHOP</a>
+            <a href="aboutus.html">ABOUT</a>
+            <a href="locations.html">LOCATIONS</a>
+        </div>
+    </div>
+
+    <button id="cart-toggle" class="cart-toggle">
+        <i class="fa-solid fa-cart-shopping"></i>
+        CART (<span id="cart-count">0</span>)
+    </button>
+</header>
+
+<!-- Shopping Cart -->
+<div class="cart-panel" id="cart-panel">
+    <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button id="close-cart" aria-label="Close cart">&times;</button>
+    </div>
+
+    <div id="cart-items">
+        <p>Your cart is empty.</p>
+    </div>
+
+    <div class="cart-bottom">
+        <h3>Total: $<span id="cart-total">0.00</span></h3>
+        <button id="clear-cart">Clear Cart</button>
+    </div>
+</div>
+
+<!-- Products -->
+<div class="container">
+
+    <h3 class="title">Shop Roasts and Records</h3>
+
+    <div class="products-container">
+
+        <div class="product" data-name="p-1">
+            <img src="1.png" alt="Pumpkin Maple Roasted coffee">
+            <h3>Pumpkin Maple Roasted</h3>
+            <div class="price">$8.00</div>
+            <button class="add-to-cart" data-name="Pumpkin Maple Roasted" data-price="8">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="product" data-name="p-2">
+            <img src="Brown and Black Minimalist Coffee Packaging Mockup Facebook Post (1).png" alt="Costa Rican Honey Roasted coffee">
+            <h3>Costa Rican Honey Roasted</h3>
+            <div class="price">$8.00</div>
+            <button class="add-to-cart" data-name="Costa Rican Honey Roasted" data-price="8">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="product" data-name="p-3">
+            <img src="1 (3).png" alt="French Vanilla coffee">
+            <h3>French Vanilla</h3>
+            <div class="price">$8.00</div>
+            <button class="add-to-cart" data-name="French Vanilla" data-price="8">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="product" data-name="p-4">
+            <img src="1 (4).png" alt="Sunrise Energy">
+            <h3>Sunrise Energy</h3>
+            <div class="price">$4.00</div>
+            <button class="add-to-cart" data-name="Sunrise Energy" data-price="4">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="product" data-name="p-5">
+            <img src="1 (1) copy.png" alt="OCTANE vinyl record">
+            <h3>OCTANE - Don Toliver | 2LP VINYL</h3>
+            <div class="price">$28.00</div>
+            <button class="add-to-cart" data-name="OCTANE - Don Toliver" data-price="28">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="product" data-name="p-6">
+            <img src="1 (1) copy 2.png" alt="BULLY vinyl record">
+            <h3>BULLY - Kanye West | LP VINYL</h3>
+            <div class="price">$50.00</div>
+            <button class="add-to-cart" data-name="BULLY - Kanye West" data-price="50">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="product" data-name="p-7">
+            <img src="1 (1) copy 3.png" alt="MOODSWINGS signed vinyl record">
+            <h3>MOODSWINGS - GRAHAM | SIGNED LP VINYL</h3>
+            <div class="price">$40.00</div>
+            <button class="add-to-cart" data-name="MOODSWINGS - GRAHAM" data-price="40">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="product" data-name="p-8">
+            <img src="kingofheartslp.webp" alt="King of Hearts vinyl record">
+            <h3>KING OF HEARTS - Brandon Lake | 2LP VINYL</h3>
+            <div class="price">$45.00</div>
+            <button class="add-to-cart" data-name="KING OF HEARTS - Brandon Lake" data-price="45">
+                Add to Cart
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer">
+        <p>*NOT REAL PRODUCTS*</p>
+        <p>© 2026 CAFÉ VINYLE. All rights reserved.</p>
+        <p>Contact: <a href="mailto:Masonlhowarth@gmail.com">Masonlhowarth@gmail.com</a></p>
+    </div>
+</footer>
+
+<!-- this is the part that makes the cart function work if u cant tell i did have to look this part up lol -->
+<script>
+    let cart = JSON.parse(localStorage.getItem("cafeVinyleCart")) || [];
+
+    const cartPanel = document.getElementById("cart-panel");
+    const cartItems = document.getElementById("cart-items");
+    const cartCount = document.getElementById("cart-count");
+    const cartTotal = document.getElementById("cart-total");
+
+    // Open cart
+    document.getElementById("cart-toggle").addEventListener("click", () => {
+        cartPanel.classList.toggle("open");
+    });
+
+    // Close cart
+    document.getElementById("close-cart").addEventListener("click", () => {
+        cartPanel.classList.remove("open");
+    });
+
+    // Add products
+    document.querySelectorAll(".add-to-cart").forEach(button => {
+        button.addEventListener("click", () => {
+            const name = button.dataset.name;
+            const price = Number(button.dataset.price);
+
+            const existing = cart.find(item => item.name === name);
+
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+
+            updateCart();
+
+            button.textContent = "Added!";
+            setTimeout(() => {
+                button.textContent = "Add to Cart";
+            }, 1000);
+        });
+    });
+
+    // Update cart
+    function updateCart() {
+        cartItems.innerHTML = "";
+
+        let total = 0;
+        let count = 0;
+
+        if (cart.length === 0) {
+            cartItems.innerHTML = "<p>Your cart is empty.</p>";
+        }
+
+        cart.forEach((item, index) => {
+            total += item.price * item.quantity;
+            count += item.quantity;
+
+            const div = document.createElement("div");
+            div.className = "cart-item";
+
+            const info = document.createElement("div");
+            info.className = "cart-item-info";
+
+            const name = document.createElement("p");
+            name.textContent = item.name;
+
+            const quantity = document.createElement("p");
+            quantity.textContent = "Quantity: " + item.quantity;
+
+            const price = document.createElement("p");
+            price.textContent = "$" + (item.price * item.quantity).toFixed(2);
+
+            const remove = document.createElement("button");
+            remove.textContent = "Remove";
+            remove.addEventListener("click", () => {
+                cart.splice(index, 1);
+                updateCart();
+            });
+
+            info.append(name, quantity, price);
+            div.append(info, remove);
+            cartItems.appendChild(div);
+        });
+
+        cartCount.textContent = count;
+        cartTotal.textContent = total.toFixed(2);
+
+        localStorage.setItem("cafeVinyleCart", JSON.stringify(cart));
+    }
+
+    // Clear cart
+    document.getElementById("clear-cart").addEventListener("click", () => {
+        cart = [];
+        updateCart();
+    });
+
+    // Display saved cart on page load
+    updateCart();
+</script>
+
+</body>
+</html>
